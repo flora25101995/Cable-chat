@@ -1,0 +1,35 @@
+<div class="sidepanel">
+    <div class="search">
+
+        <%= form_tag('/chat_rooms', method: :get, class: "search-form") do %>
+            <input type="text" name="search" placeholder="Search contacts..." />
+
+            <%= button_tag(type: "submit", class: "btn-search") do %>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            <% end %>
+        <% end %>
+        
+    </div>
+
+    <div class="contacts">
+        <ul style="padding: 0px">
+            <% @chat_rooms.each do |chat_room| %>
+                <li class="<%= check_active_chatroom(chat_room, @chat_room)%>" >
+                    <%= link_to chat_room_path(chat_room) do %>
+                        <div class="wrap">
+                            <span class="contact-status online"></span>
+                            <img src="<%= chat_room.user.gravatar_url %>" alt="" />
+                            <div class="meta">
+                                <p><%=chat_room.user.name%></p>
+                                <p class="preview">Login 2 hours ago.</p>
+                            </div>
+                        </div>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="bottom-bar">        
+    </div>
+</div>

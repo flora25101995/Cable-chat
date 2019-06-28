@@ -1,0 +1,50 @@
+<div class="all">
+
+  <div class="frame">
+
+    <%= render partial: 'contact/contact' %>
+
+    <div class="content"> 
+
+      <div class="contact-profile">
+        <p><%= @chat_room.user.name %></p>
+      </div>
+    
+      <div class="messages">
+        <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+          <%= render @chat_room.messages %>
+        </div>
+      </div>
+
+      <div class="message-input">
+        <div class="wrap">
+
+          <%= form_for @message, url: '#' do |f| %>
+
+            <%= f.text_field :body, class: 'input', placeholder: "Write your message..." %>
+
+            <%= f.file_field :image %>
+
+            <%
+=begin%>
+ <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
+<%
+=end%>
+
+            <%= f.button :submit do %>
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            <% end %>
+
+          <% end %>
+
+
+          
+
+        </div>
+      </div>
+
+    </div>
+  <div>
+</div>
+
+

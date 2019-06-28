@@ -1,0 +1,25 @@
+
+
+<div class="message-info">
+
+  <% chat_room_id = @chat_room&.user&.id || message.chat_room&.user&.id  %>
+
+
+  <% if chat_room_id == message.user.id %>
+    
+    <div class="sent">
+      <img src="<%= message.user.gravatar_url %>" alt="" />
+      <p><small><%=  message.user.name %></small><br><%= message.body %></p><br>
+      <span><%= message.timestamp %></span>
+    </div>
+
+  <% else %>
+
+    <div class="replies">
+      <img src="<%= message.user.gravatar_url %>" alt="" />
+      <p><small><%=  message.user.name %></small><br><%= message.body %></p><br>
+      <span><%= message.timestamp %></span>
+    </div>
+    
+  <% end %>
+</div>
