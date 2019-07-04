@@ -21,25 +21,20 @@
 
           <%= form_for @message, url: '#' do |f| %>
 
-            <%= f.text_field :body, class: 'input', placeholder: "Write your message..." %>
+            <div class="input">
+              <%= f.text_area :body, placeholder: "Write your message...", rows: 2 %>
+            </div>
+            
+            
 
-            <%= f.file_field :image %>
-
-            <%
-=begin%>
- <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
-<%
-=end%>
+            <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
 
             <%= f.button :submit do %>
               <i class="fa fa-paper-plane" aria-hidden="true"></i>
             <% end %>
 
-          <% end %>
-
-
+          <% end %> 
           
-
         </div>
       </div>
 
