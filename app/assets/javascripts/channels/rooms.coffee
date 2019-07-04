@@ -31,11 +31,16 @@ jQuery(document).on 'turbolinks:load', ->
             $this = $(this)
             textarea = $this.find('#message_body')
 
-            if $.trim(textarea.val()).length > 1 
+            if $.trim(textarea.val()).length > 0 
                 App.global_chat.send_message textarea.val(), messages.data('chat-room-id')
                 textarea.val('')                    
                     
             e.preventDefault()
             return false  
         
+
+        $('.input').keypress (e) ->
+            if e.which == 13
+                $('#new_message').submit();
+                return false; 
     
