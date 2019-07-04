@@ -2,7 +2,7 @@
     <div class="search">
 
         <%= form_tag('/chat_rooms', method: :get, class: "search-form") do %>
-            <input type="text" name="search" placeholder="Search contacts..." />
+            <input type="text" name="search" placeholder="Search contacts...", autocomplete="off" />
 
             <%= button_tag(type: "submit", class: "btn-search") do %>
                 <i class="fa fa-search" aria-hidden="true"></i>
