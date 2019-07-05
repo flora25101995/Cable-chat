@@ -10,9 +10,6 @@ class ChatRoomsController < ApplicationController
         @chat_rooms = search_query
       end
       
-      # if search_query.empty?
-      #   redirect_to chat_room_path(1), danger: "Người dùng không tồn tại."
-      # end
 
       if params[:search]
         users = User.includes(:chat_rooms).where("email ilike ?", "%#{search_value}%")
@@ -21,14 +18,6 @@ class ChatRoomsController < ApplicationController
         end
         chat_rooms = users.map(&:get_chat_room)
       end
-
-      # if search_value
-      #   if search_user.exists?
-      #     @chat_rooms = search_query
-      #   else
-      #     redirect_to chat_room_path(1), danger: "Người dùng không tồn tại."
-      #   end
-      # end
 
     end
   

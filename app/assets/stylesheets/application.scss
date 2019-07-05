@@ -165,6 +165,7 @@
 }
 .frame .sidepanel .contacts ul li.contact:hover {
   background: #F5F5F5;
+  text-decoration: none;
 }
 .frame .sidepanel .contacts ul li.contact.active {
   background: #E4E4E4;
@@ -227,6 +228,7 @@
   margin-bottom: 0;
   color: black;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .frame .sidepanel .contacts ul li.contact .wrap .meta {

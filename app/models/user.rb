@@ -15,9 +15,9 @@ class User < ApplicationRecord
   end
 
   def get_chat_room
-    if self.chat_rooms.nil?
-      # chat_room = self.chat_rooms.build(chat_room_params)
-      redirect_to chat_room_path(1), danger: "Người dùng chưa có phòng chat."
+    if self.chat_rooms.empty?
+      p "something"
+      self.chat_rooms.create
     end
     return self.chat_rooms
   end
