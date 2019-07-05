@@ -14,6 +14,15 @@ module ApplicationHelper
     end
   end
 
+  def check_user_login
+    if user_signed_in?
+      "online"
+    else
+      "offline"
+    end
+  end
+
+
   
 
 end
