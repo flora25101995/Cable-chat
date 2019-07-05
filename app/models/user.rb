@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  
   def name
     email.split('@')[0]
   end
@@ -11,10 +14,15 @@ class User < ApplicationRecord
     "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
+  def get_chat_room
+    if self.chat_rooms.nil?
+      # chat_room = self.chat_rooms.build(chat_room_params)
+      redirect_to chat_room_path(1), danger: "Người dùng chưa có phòng chat."
+    end
+    return self.chat_rooms
+  end
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
   
 end

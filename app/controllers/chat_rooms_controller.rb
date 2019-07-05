@@ -1,9 +1,35 @@
 class ChatRoomsController < ApplicationController
     def index
+
       @chat_rooms = ChatRoom.all
-      if params[:search]
-        @chat_rooms = ChatRoom.joins(:user).where("users.email LIKE '%#{params[:search]}%'")
+      search_value = params[:search]
+      search_query = ChatRoom.joins(:user).where("users.email LIKE '%#{search_value}%'")
+      search_user = User.where("users.email LIKE '%#{search_value}%'")
+
+      if search_value
+        @chat_rooms = search_query
       end
+      
+      # if search_query.empty?
+      #   redirect_to chat_room_path(1), danger: "Người dùng không tồn tại."
+      # end
+
+      if params[:search]
+        users = User.includes(:chat_rooms).where("email ilike ?", "%#{search_value}%")
+        if users.empty?
+          redirect_to chat_room_path(1), danger: "Người dùng không tồn tại."
+        end
+        chat_rooms = users.map(&:get_chat_room)
+      end
+
+      # if search_value
+      #   if search_user.exists?
+      #     @chat_rooms = search_query
+      #   else
+      #     redirect_to chat_room_path(1), danger: "Người dùng không tồn tại."
+      #   end
+      # end
+
     end
   
     def new
@@ -33,5 +59,4 @@ class ChatRoomsController < ApplicationController
     end
 
     
-  end
-  
+end

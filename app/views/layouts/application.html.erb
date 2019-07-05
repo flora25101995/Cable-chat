@@ -15,6 +15,13 @@
         <div class="col-12">
           <%= render partial: 'shared/navigation_bar' %>
           <div class="my-3">
+
+            <% flash.each do |name, value| %>
+              <div class="alert alert-danger">
+                <%= value %>
+              </div>
+            <% end %>
+            
             <%= yield %>
           </div>
         </div>

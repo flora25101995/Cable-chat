@@ -15,6 +15,7 @@
         <ul style="padding: 0px">
             <% @chat_rooms.each do |chat_room| %>
                 <li class="<%= check_active_chatroom(chat_room, @chat_room)%>" >
+
                     <%= link_to chat_room_path(chat_room) do %>
                         <div class="wrap">
                             <span class="contact-status online"></span>
@@ -25,11 +26,12 @@
                             </div>
                         </div>
                     <% end %>
+                    
                 </li>
             <% end %>
         </ul>
     </div>
 
-    <div class="bottom-bar">        
-    </div>
+    <!-- <div class="bottom-bar">        
+    </div> -->
 </div>
