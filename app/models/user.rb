@@ -14,6 +14,7 @@ class User < ApplicationRecord
     "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
+
   def get_chat_room
     if self.chat_rooms.empty?
       p "something"
@@ -22,6 +23,12 @@ class User < ApplicationRecord
     return self.chat_rooms
   end
   
+
+  def appear(data)
+    self.update(online: true, current_chat_rooms: data['on'])
+    ActionCable.server.broadcast "AppearanceChannel", {event: 'appear', user_id: self.id, room: self.current_chat_rooms}
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
