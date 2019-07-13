@@ -14,7 +14,6 @@ jQuery(document).on 'turbolinks:load', ->
             },
                 
             connected: ->
-                console.log('You are connected!');
                 # Called when the subscription is ready for use on the server
 
             disconnected: ->
@@ -24,25 +23,33 @@ jQuery(document).on 'turbolinks:load', ->
                 messages.append data['message']                
                 messages_to_bottom()
 
-
             send_message: (message, chat_room_id, image, image_name) ->
-                @perform 'send_message', message: message, chat_room_id: chat_room_id
+                @perform 'send_message', message: message, chat_room_id: chat_room_id, image: image, image_name: image_name
+
 
 
         $('#new_message').submit (e) ->
+            console.log('#message_body')
             $this = $(this)
             textarea = $this.find('#message_body')
+            new_message_image = $this.find('#message_image')
 
-            if $.trim(textarea.val()).length > 0 
-                App.global_chat.send_message textarea.val(), messages.data('chat-room-id')
-                textarea.val('')                    
+            if $.trim(textarea.val()).length > 1 or new_message_image.get(0).files.length > 0
+
+                if new_message_image.get(0).files.length > 0 # if file is chosen
+                    reader = new FileReader()
+                    file_name = new_message_image.get(0).files[0].name
+                    reader.addEventListener "loadend", -> # perform the following action after the file is loaded
+                        App.global_chat.send_message textarea.val(), messages.data('chat-room-id'), reader.result, file_name
+
+                    reader.readAsDataURL new_message_image.get(0).files[0]
+                else
+                    App.global_chat.send_message textarea.val(), messages.data('chat-room-id'), null, null
+                    textarea.val('')
+                    console.log(textarea)
+                    
                     
             e.preventDefault()
             return false  
         
-
-        $('.input').keypress (e) ->
-            if e.which == 13
-                $('#new_message').submit();
-                return false; 
     

@@ -33,5 +33,8 @@ class ChatRoomsChannel < ApplicationCable::Channel
 
     end
 
+
+
+
   end
   

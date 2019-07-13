@@ -24,10 +24,19 @@ class User < ApplicationRecord
   end
   
 
-  def appear(data)
-    self.update(online: true, current_chat_rooms: data['on'])
-    ActionCable.server.broadcast "AppearanceChannel", {event: 'appear', user_id: self.id, room: self.current_chat_rooms}
+  def appear()
+    p 'Calling appear in the User model---------------------------------'
+    self.online = true
+    ActionCable.server.broadcast "appearance_channel", {online: true, user_id: self.id}
+    # self.update(online: true, current_chat_rooms: data['on'])
   end
+
+  def disappear()
+    p 'modeldisappear---------------------------------'
+    self.online = false
+
+  end
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

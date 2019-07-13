@@ -8,7 +8,10 @@ class MessageBroadcastJob < ApplicationJob
     private
 
     def render_message(message)
+      
+      # trả lại giá trị có định dạng như trong _message.html.erb
       MessagesController.render partial: 'messages/message', locals: {message: message}
+    
     end
   end
   

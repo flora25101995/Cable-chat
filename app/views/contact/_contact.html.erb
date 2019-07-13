@@ -14,10 +14,11 @@
     <div class="contacts">
         <ul style="padding: 0px">
             <% @chat_rooms.each do |chat_room| %>
-                <li class="<%= check_active_chatroom(chat_room, @chat_room)%>" >
+                <li class="<%= check_active_chatroom(chat_room, @chat_room)%>", data-user="<%= chat_room.user_id %>" >
 
                     <%= link_to chat_room_path(chat_room) do %>
                         <div class="wrap">
+                            
                             <span class="contact-status"></span>
                             <img src="<%= chat_room.user.gravatar_url %>" alt="" />
                             <div class="meta">
