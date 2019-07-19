@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
   devise :database_authenticatable, :registerable,
@@ -14,7 +15,7 @@ class User < ApplicationRecord
     "https://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
-
+  # tạo chat room khi user tồn tại
   def get_chat_room
     if self.chat_rooms.empty?
       p "something"
@@ -24,17 +25,21 @@ class User < ApplicationRecord
   end
   
 
+  # được gọi khi user login vào
   def appear()
     p 'Calling appear in the User model---------------------------------'
     self.online = true
+    self.save
+    p self.online
     ActionCable.server.broadcast "appearance_channel", {online: true, user_id: self.id}
-    # self.update(online: true, current_chat_rooms: data['on'])
   end
 
+  # được gọi khi user logout
   def disappear()
     p 'modeldisappear---------------------------------'
     self.online = false
-
+    self.save
+    ActionCable.server.broadcast "appearance_channel", {online: false, user_id: self.id}
   end
 
 

@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark background-dark justify-content-between">
-  <a class="navbar-brand retext-warning" href="#">Chat</a>
+  <% if has_role?(:admin) %>
+    <a class="navbar-brand retext-warning" href="#">Admin</a>
+  <% else %>
+    <a class="navbar-brand retext-warning" href="#">User</a>
+  <% end %>
   <%
 =begin%>
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-bar-collapse" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">

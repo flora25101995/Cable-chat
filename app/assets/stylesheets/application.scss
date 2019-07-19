@@ -2,6 +2,7 @@
 @import "font-awesome";
 @import "bootstrap";
 @import "devise"; 
+@import "user";
 
 
 
@@ -189,9 +190,9 @@
   position: absolute;
   left: 28px;
   /*bottom: -2px;*/
-  margin: 5px 0 0 -2px;
-  width: 12px;
-  height: 12px;
+  margin: 4px 0 0 -2px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: 1px solid #fff;
   background: #fff;

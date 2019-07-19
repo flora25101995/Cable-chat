@@ -1,46 +1,53 @@
-<div class="all">
+<% if has_role?(:admin) %>
+  <div class="all">
 
 
-  <div class="frame">
+    <div class="frame">
 
-    <%= render partial: 'contact/contact' %>
+      <%= render partial: 'contact/contact' %>
 
-    <div class="content"> 
+      <div class="content"> 
 
-      <div class="contact-profile">
-        <p><%= @chat_room.user.name %></p>
-      </div>
-    
-      <div class="messages">
-        <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-          <%= render @chat_room.messages %>
+        <div class="contact-profile">
+          <p><%= @chat_room.user.name %></p>
         </div>
-      </div>
-
-      <div class="message-input">
-        <div class="wrap">
-
-          <%= form_for @message, url: '#' do |f| %>
-
-            <div class="input">
-              <%= f.text_area :body, placeholder: "Write your message...", rows: 1 %>
-            </div>
-            
-            
-
-            <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
-
-            <%= f.button :submit do %>
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-            <% end %>
-
-          <% end %> 
-          
+      
+        <div class="messages">
+          <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+            <%= render @chat_room.messages %>
+          </div>
         </div>
+
+        <div class="message-input">
+          <div class="wrap">
+
+            <%= form_for @message, url: '#' do |f| %>
+
+              <div class="input">
+                <%= f.text_area :body, placeholder: "Write your message...", rows: 1 %>
+              </div>
+              
+              
+
+              <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
+
+              <%= f.button :submit do %>
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+              <% end %>
+
+            <% end %> 
+            
+          </div>
+        </div>
+
       </div>
+    <div>
+  </div>
 
-    </div>
-  <div>
-</div>
+<% else %>
 
+  <div class="body">
+    <h1>Chat room</h1>
+  </div>
 
+<% end %>

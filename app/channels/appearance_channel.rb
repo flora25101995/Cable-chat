@@ -4,7 +4,8 @@ class AppearanceChannel < ApplicationCable::Channel
   end
  
   def unsubscribed
-    
+    p 'chatroom   unsubcribed---------------------------------'
+    current_user.disappear
   end
   
   def appear
@@ -13,24 +14,5 @@ class AppearanceChannel < ApplicationCable::Channel
   end
 
   def disappear
-    p 'chatroomdisappear---------------------------------'
-    current_user.disappear
   end
-
-#   def appear(data)
-#     p 'appear---------------------------------'
-#     p data
-#     current_user.appear(on: data['appearing_on'])
-#     p data
-#   end
-
-#   def disappear(data)
-#     p 'disappear---------------------------------'
-#     p data
-#     current_user.disappear(on: data['appearing_on'])
-#   end
- 
-#   def away
-#     current_user.away
-#   end
 end

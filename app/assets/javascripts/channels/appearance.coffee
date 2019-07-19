@@ -1,18 +1,22 @@
 App.appearance = App.cable.subscriptions.create "AppearanceChannel",
 
     connected: ->
+        console.log('You in!')
         # @install()
         @appear()
     
     # Called when the WebSocket connection is closed.
     disconnected: ->
         console.log('You out!')
+        @disappear()
 
     appear: ->
         # Calls `AppearanceChannel#appear(data)` on the server.
-        console.log('It appear!');
+        console.log('Call appear!');
         @perform 'appear'
 
+    disappear: ->
+        @perform 'disappear'
 
     received: (data) ->
         console.log('appear', data)
@@ -23,52 +27,10 @@ App.appearance = App.cable.subscriptions.create "AppearanceChannel",
         userID = $('.contacts').find('li[data-user='+currentUserId+']')
         console.log(userID)
 
+        if data.online == false
+            userID.find('.contact-status').removeClass 'online'
+            userID.find('.contact-status').addClass 'offline'
+            return # phải có return không sẽ nhảy xuống dưới, hoặc dùng else        
+
+        userID.find('.contact-status').removeClass 'offline'
         userID.find('.contact-status').addClass 'online'
-
-        # if data == true
-        #     $('.contact-status').addClass 'online'
-        # else
-        #     $('.contact-status').addClass 'offline'
-
-        
-#     userId = data.user_id
-#     eventType = data.event
-#     if eventType == 'appear'
-#       $('.contact-status').addClass 'online'
-#     else
-#       $('.contact-status').addClass 'offline'
-
-
-
-
-#     @uninstall()
- 
-#   # Called when the subscription is rejected by the server.
-#   rejected: ->
-#     @uninstall()
- 
-#   appear: ->
-#     # Calls `AppearanceChannel#appear(data)` on the server.
-#     console.log('adwdawd');
-#     @perform("appear", appearing_on: $("main").data("appearing-on"))
- 
-#   away: ->
-#     # Calls `AppearanceChannel#away` on the server.
-#     @perform("away")
- 
-
-#   buttonSelector = "[data-behavior~=appear_away]"
- 
-#   install: ->
-#     $(document).on "turbolinks:load.appearance", =>
-#       @appear()
- 
-#     $(document).on "click.appearance", buttonSelector, =>
-#       @away()
-#       false
- 
-#     $(buttonSelector).show()
- 
-#   uninstall: ->
-#     $(document).off(".appearance")
-#     $(buttonSelector).hide()

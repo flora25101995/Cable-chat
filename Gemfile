@@ -61,3 +61,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'pg', '~> 1.1', '>= 1.1.4'
+gem 'cancancan'
+gem 'rolify'

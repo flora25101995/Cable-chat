@@ -19,7 +19,8 @@
                     <%= link_to chat_room_path(chat_room) do %>
                         <div class="wrap">
                             
-                            <span class="contact-status"></span>
+                            <span class="contact-status <%= user_online_status(chat_room.user.online) %>"></span>
+
                             <img src="<%= chat_room.user.gravatar_url %>" alt="" />
                             <div class="meta">
                                 <p><%=chat_room.user.name%></p>
@@ -32,7 +33,4 @@
             <% end %>
         </ul>
     </div>
-
-    <!-- <div class="bottom-bar">        
-    </div> -->
 </div>
