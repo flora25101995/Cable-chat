@@ -49,10 +49,12 @@
   max-width: 330px;
   width: 40%;
   height: 100%;
+  background: #1D2D38;
   color: black;
   border-right: 2px solid #d2d2d2;
   overflow: hidden;
   position: relative;
+  border-radius: 10px 0 0 10px;
 }
 
 @media screen and (max-width: 735px) {
@@ -105,8 +107,8 @@
   width: 50px;
   height: 40px;
   color: white;
-  background: #1d2d38;
-  border: 1px solid #1d2d38;
+  background: #EA9A27;
+  border: 1px solid #EA9A27;
   box-sizing: border-box;
   border-radius: 0 30px 30px 0;
   margin-left: -6px;
@@ -117,7 +119,7 @@
 }
 
 .frame .sidepanel .search .btn-search:hover {
-  background: #425a6b;
+  background: #FFAF3E;
 }
 
 
@@ -165,12 +167,12 @@
   }
 }
 .frame .sidepanel .contacts ul li.contact:hover {
-  background: #F5F5F5;
+  background: #4A5B67;
   text-decoration: none;
 }
 .frame .sidepanel .contacts ul li.contact.active {
-  background: #E4E4E4;
-  border-right: 5px solid #E4E4E4;
+  background: #334857;
+  border-right: 5px solid #334857;
 }
 .frame .sidepanel .contacts ul li.contact.active span.contact-status {
   border: 1px solid #fff !important;
@@ -227,7 +229,7 @@
 .frame .sidepanel .contacts ul li.contact .wrap .meta p {
   margin-top: 0;
   margin-bottom: 0;
-  color: black;
+  color: white;
   font-size: 18px;
   text-transform: capitalize;
 }
@@ -248,7 +250,7 @@
   -o-transition: 1s all ease;
   -webkit-transition: 1s all ease;
   transition: 1s all ease;
-  color: rgb(104, 104, 104);
+  color: #bbbbbb;
   font-size: 13px;
 }
 .frame .sidepanel .contacts ul li.contact .wrap .meta .preview span {
@@ -348,7 +350,7 @@
   margin: 15px 3px 0 0;
 }
 .frame .content .messages .sent p {
-  background: #058827;
+  background: #4A5B67;
   color: #FFF;    
   margin-bottom: 2px;
   position: relative;
@@ -485,7 +487,7 @@
   border-radius: 25px;
   width: 50px;
   height: 50px;
-  background: #058827;
+  background: #EA9A27;
   color: #FFF;
   margin-left: 11px;
   margin-top: 7px;
@@ -503,8 +505,16 @@
   }
 }
 .frame .content .message-input .wrap button:hover {
-  background: #2AAE4C;
+  background: #FFAF3E;
 }
 .frame .content .message-input .wrap button:focus {
   outline: none;
+}
+
+.admin {
+  color: #EA9A27;
+}
+
+.user {
+  color: white;
 }

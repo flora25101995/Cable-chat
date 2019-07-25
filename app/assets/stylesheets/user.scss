@@ -117,7 +117,7 @@
     margin: 15px 3px 0 0;
   }
   .body .content .messages .sent p {
-    background: #058827;
+    background: #4A5B67;
     color: #FFF;    
     margin-bottom: 2px;
     position: relative;
@@ -184,7 +184,7 @@
     margin-left: 9px;
     bottom: 0;
     height: 84px;
-    width: 97%;
+    width: calc(100% - 19px);
     z-index: 99;
     border-top: 1px solid #d2d2d2;
   }
@@ -196,18 +196,14 @@
     float: left;
     // border: 1px solid #B4B4B4;
     // border-radius: 30px;
-    width: calc(100% - 95px);
+    width: calc(100% - 85px);
     padding: 11px 40px 10px 30px;
     font-size: 0.8em;
     color: black;
     height: 65px;
     margin-left: 10px;
   }
-  @media screen and (max-width: 735px) {
-    .body .content .message-input .wrap .input {
-      padding: 11px 40px 10px 15px;
-    }
-  }
+
   .body .content .message-input .wrap .input:focus {
     outline: none;
   }
@@ -232,7 +228,7 @@
   
   .body .content .message-input .wrap .attachment {
     position: absolute;
-    right: 102px;
+    right: 85px;
     z-index: 4;
     margin-top: 22px;
     font-size: 22px;
@@ -240,12 +236,7 @@
     opacity: .5;
     cursor: pointer;
   }
-  @media screen and (max-width: 735px) {
-    .body .content .message-input .wrap .attachment {
-      margin-top: 22px;
-      right: 97px;
-    }
-  }
+
   .body .content .message-input .wrap .attachment:hover {
     opacity: 1;
   }
@@ -255,9 +246,9 @@
     border-radius: 25px;
     width: 50px;
     height: 50px;
-    background: #058827;
+    background: #EA9A27;
     color: #FFF;
-    margin-left: 11px;
+    margin-left: 13px;
     margin-top: 7px;
     padding: 11px 0;
     cursor: pointer;
@@ -273,7 +264,7 @@
     }
   }
   .body .content .message-input .wrap button:hover {
-    background: #2AAE4C;
+    background: #FFAF3E;
   }
   .body .content .message-input .wrap button:focus {
     outline: none;
