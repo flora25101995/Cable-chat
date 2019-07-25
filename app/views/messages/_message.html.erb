@@ -1,5 +1,5 @@
 
-  <div class="message-info">
+  <div class="message-info", data-user-id="<%= message.user_id %>">
 
     <% chat_room_id = @chat_room&.user&.id || message.chat_room&.user&.id  %>
 

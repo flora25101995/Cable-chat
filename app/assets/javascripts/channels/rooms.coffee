@@ -26,17 +26,24 @@ jQuery(document).on 'turbolinks:load', ->
             messages.append data['message']          
             messages_to_bottom()
 
+            # user_id của người đang login
             user_id = document.getElementById("messages").getAttribute("current-user-id").toString()
             console.log("cookie:", user_id)
+
+            # user_id của message
             muser_id = data.message_user_id.toString()
 
+            # tìm message của user_id
+            user_message = $('.messages').find('div[data-user-id='+user_id+']')
+            console.log('user_message:', user_message)
+
             if muser_id == user_id
-                $(".message-info").find('div').removeClass 'sent'
-                $(".message-info").find('div').addClass 'replies'
+                user_message.find('div').removeClass 'sent'
+                user_message.find('div').addClass 'replies'
                 return
 
-            $(".message-info").find('div').removeClass 'replies'
-            $(".message-info").find('div').addClass 'sent'
+            user_message.find('div').removeClass 'replies'
+            user_message.find('div').addClass 'sent'
 
 
 
