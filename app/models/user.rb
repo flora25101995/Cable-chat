@@ -5,10 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  def name
-    email.split('@')[0]
-  end
-
   
   def gravatar_url
     gravatar_id = Digest::MD5::hexdigest(email).downcase

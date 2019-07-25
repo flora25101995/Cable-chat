@@ -5,7 +5,7 @@
 
     <div class="<%= is_owner(current_user, chat_room_id, message&.user_id) %>">
       <img src="<%= message.user.gravatar_url %>" alt="" />
-      <p><small><%=  message.user.name %></small><br><%= message.body %></p><br>
+      <p><small><%=  message.user.username %></small><br><%= message.body %></p><br>
       <span><%= message.timestamp %></span>
     </div>
 
