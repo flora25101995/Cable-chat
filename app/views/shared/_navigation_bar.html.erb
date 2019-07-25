@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark background-dark justify-content-between">
-  <% if has_role?(:admin) %>
+  <% if has_role?(current_user, :admin) %>
     <a class="navbar-brand retext-warning" href="#">Admin</a>
   <% else %>
     <a class="navbar-brand retext-warning" href="#">User</a>

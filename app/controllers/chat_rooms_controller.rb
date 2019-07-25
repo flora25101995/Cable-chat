@@ -1,6 +1,6 @@
 class ChatRoomsController < ApplicationController
     def index
-
+      @chat_room = current_user.chat_rooms.first
       @chat_rooms = ChatRoom.all
       search_value = params[:search]
       search_query = ChatRoom.joins(:user).where("users.email LIKE '%#{search_value}%'")

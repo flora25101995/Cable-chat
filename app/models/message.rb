@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  resourcify
   belongs_to :user
   belongs_to :chat_room
   has_one_attached :image

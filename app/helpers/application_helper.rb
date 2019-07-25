@@ -1,8 +1,28 @@
 module ApplicationHelper
   
 
-  def has_role?(role)
+  def has_role?(current_user, role)
+    p "current user"
+    p current_user
+    p role
     current_user && current_user.has_role?(role)
+  end
+
+  
+  def is_owner( current_user, current_room_user_id, message_user_id)
+    if current_user && current_user.has_role?(:admin)
+      if current_room_user_id == message_user_id
+        "sent"
+      else
+        "replies"
+      end
+    else
+      if current_room_user_id == message_user_id
+        "replies"
+      else
+        "sent"
+      end
+    end
   end
 
   

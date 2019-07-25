@@ -20,9 +20,24 @@ jQuery(document).on 'turbolinks:load', ->
         disconnected: ->
             # Called when the subscription has been terminated by the server
 
-        received: (data) ->
-            messages.append data['message']                
+        received: (data) ->  
+
+            console.log(data)
+            messages.append data['message']          
             messages_to_bottom()
+
+            user_id = document.getElementById("messages").getAttribute("current-user-id").toString()
+            console.log("cookie:", user_id)
+            muser_id = data.message_user_id.toString()
+
+            if muser_id == user_id
+                $(".message-info").find('div').removeClass 'sent'
+                $(".message-info").find('div').addClass 'replies'
+                return
+
+            $(".message-info").find('div').removeClass 'replies'
+            $(".message-info").find('div').addClass 'sent'
+
 
 
         send_message: (message, chat_room_id) ->

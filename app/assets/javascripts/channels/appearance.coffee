@@ -22,7 +22,7 @@ App.appearance = App.cable.subscriptions.create "AppearanceChannel",
         console.log('appear', data)
         currentUserId = data.user_id
         currentUserId = currentUserId.toString()
-        console.log(currentUserId)
+        console.log("currentUserId", currentUserId)
 
         userID = $('.contacts').find('li[data-user='+currentUserId+']')
         console.log(userID)

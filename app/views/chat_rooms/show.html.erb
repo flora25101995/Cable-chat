@@ -1,4 +1,4 @@
-<% if has_role?(:admin) %>
+<% if has_role?(current_user, :admin) %>
   <div class="all">
 
 
@@ -13,7 +13,7 @@
         </div>
       
         <div class="messages">
-          <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+          <div id="messages" data-chat-room-id="<%= @chat_room.id %>" current-user-id="<%= current_user.id%>">
             <%= render @chat_room.messages %>
           </div>
         </div>
@@ -47,7 +47,41 @@
 <% else %>
 
   <div class="body">
-    <h1>Chat room</h1>
+    <div class="content"> 
+
+      <div class="contact-profile">
+        <p><%= @chat_room.user.name %></p>
+      </div>
+    
+      <div class="messages">
+        <div id="messages" data-chat-room-id="<%= @chat_room.id %>" current-user-id="<%= current_user.id%>">
+          <%= render @chat_room.messages %>
+        </div>
+      </div>
+
+      <div class="message-input">
+        <div class="wrap">
+
+          <%= form_for @message, url: '#' do |f| %>
+
+            <div class="input">
+              <%= f.text_area :body, placeholder: "Write your message...", rows: 1 %>
+            </div>
+            
+            
+
+            <i class="fa fa-paperclip attachment" aria-hidden="true"></i> 
+
+            <%= f.button :submit do %>
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            <% end %>
+
+          <% end %> 
+          
+        </div>
+      </div>
+
+    </div>
   </div>
 
 <% end %>
