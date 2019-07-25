@@ -180,10 +180,13 @@
   }
   .body .content .message-input {
     position: absolute;
+    padding-top: 7px;
+    margin-left: 9px;
     bottom: 0;
     height: 84px;
-    width: 100%;
+    width: 97%;
     z-index: 99;
+    border-top: 1px solid #d2d2d2;
   }
   .body .content .message-input .wrap {
     position: relative;
@@ -191,9 +194,9 @@
   .body .content .message-input .wrap .input {
     font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
     float: left;
-    border: 1px solid #B4B4B4;
-    border-radius: 30px;
-    width: calc(100% - 115px);
+    // border: 1px solid #B4B4B4;
+    // border-radius: 30px;
+    width: calc(100% - 95px);
     padding: 11px 40px 10px 30px;
     font-size: 0.8em;
     color: black;
@@ -229,7 +232,7 @@
   
   .body .content .message-input .wrap .attachment {
     position: absolute;
-    right: 124px;
+    right: 102px;
     z-index: 4;
     margin-top: 22px;
     font-size: 22px;
@@ -239,8 +242,8 @@
   }
   @media screen and (max-width: 735px) {
     .body .content .message-input .wrap .attachment {
-      margin-top: 16px;
-      right: 120px;
+      margin-top: 22px;
+      right: 97px;
     }
   }
   .body .content .message-input .wrap .attachment:hover {
@@ -254,7 +257,7 @@
     height: 50px;
     background: #058827;
     color: #FFF;
-    margin-left: 25px;
+    margin-left: 11px;
     margin-top: 7px;
     padding: 11px 0;
     cursor: pointer;
