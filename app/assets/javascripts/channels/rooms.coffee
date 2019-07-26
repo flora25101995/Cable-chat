@@ -42,8 +42,8 @@ jQuery(document).on 'turbolinks:load', ->
                 user_message.find('div').addClass 'replies'
                 return
 
-            user_message.find('div').removeClass 'replies'
-            user_message.find('div').addClass 'sent'
+            # user_message.find('div').removeClass 'replies'
+            # user_message.find('div').addClass 'sent'
 
 
 
